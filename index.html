@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Famore - Artisan Coffee Roastery & Cafe Menu. Specialty coffee, fresh salads, artisan sandwiches, handmade pastries, and roasted beans. Prices in Israeli Shekels (₪).">
+  <title>Famore • Artisan Coffee & Bakery | Menu</title>
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-logo" id="brand-logo">
+        <div class="brand-icon">☕</div>
+        <div>
+          <h1 class="brand-title">Famore</h1>
+          <div class="brand-subtitle">Artisan Coffee & Bakery</div>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <div class="badge-open">
+          <span class="pulse-dot"></span> Open • 07:00 - 16:30
+        </div>
+        <button class="btn-admin-toggle" id="admin-toggle-btn" aria-label="Toggle Admin Mode">
+          🔒 Staff
+        </button>
+        <button class="btn-cart-toggle" id="cart-toggle-btn" aria-label="Open Cart">
+          <span>🛍️ Cart</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HAPPY HOURS BANNER -->
+  <div class="happy-hours-banner" id="happy-hours-banner">
+    <div class="container happy-hours-inner">
+      <span class="hh-icon">🎉</span>
+      <span class="hh-text"><strong>Happy Hours Active!</strong> Selected items are <strong>₪4 off</strong> right
+        now</span>
+      <span class="hh-icon">🎉</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero-section">
+      <div class="container">
+        <div class="hero-tag">Handcrafted & Ethically Sourced</div>
+        <h2 class="hero-title">Experience <span>Artisan Coffee</span> & Fresh Daily Bakery</h2>
+        <p class="hero-description">
+          Explore our seasonal menu featuring single-origin roasts, gourmet salads, sourdough sandwiches, and freshly
+          baked French pastries. All prices in Israeli Shekels (₪).
+        </p>
+
+        <!-- CONTROLS & SEARCH BAR -->
+        <div class="controls-bar">
+          <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" class="search-input"
+              placeholder="Search coffee, espresso, latte, salads, sourdough, pastries..." autocomplete="off" />
+          </div>
+
+          <!-- CATEGORY TABS -->
+          <nav class="categories-nav" id="categories-nav" aria-label="Menu Categories">
+            <!-- Dynamically populated by app.js -->
+          </nav>
+
+          <!-- DIETARY FILTERS -->
+          <div class="diet-filters" id="diet-filters" aria-label="Dietary Filters">
+            <!-- Dynamically populated by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU GRID SECTION -->
+    <section class="menu-section container" id="menu-section">
+      <div class="section-header">
+        <h2 class="section-title" id="section-title">Menu</h2>
+        <span class="item-count" id="item-count">Loading items...</span>
+      </div>
+
+      <div class="menu-grid-container" id="menu-grid-container">
+        <!-- Dynamically populated by app.js with Category Dividers & Items -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ADMIN AUTHENTICATION MODAL -->
+  <div class="modal-backdrop" id="admin-auth-modal" role="dialog" aria-modal="true">
+    <div class="modal-card auth-modal-card">
+      <button class="btn-close-modal" id="auth-modal-close" aria-label="Close Auth Modal">✕</button>
+      <div class="modal-content auth-modal-content">
+        <div class="auth-icon">🔒</div>
+        <h3 class="modal-title">Staff Access Login</h3>
+        <p class="modal-desc">Enter PIN passcode to access menu management
+        </p>
+
+        <form id="admin-auth-form" onsubmit="event.preventDefault();">
+          <input type="password" id="admin-pin-input" class="admin-pin-input" placeholder="Enter PIN" maxlength="10"
+            autocomplete="current-password" />
+          <div id="auth-error-msg" class="auth-error-msg"></div>
+          <button type="submit" id="btn-submit-pin" class="btn-submit-pin">
+            Unlock Admin Panel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL DRAWER -->
+  <aside class="admin-drawer" id="admin-drawer" aria-label="Admin Management Panel">
+    <div class="admin-header">
+      <h3 class="admin-title">⚙️ Menu Management</h3>
+      <button class="btn-close-admin" id="admin-close" aria-label="Close Admin Panel">✕</button>
+    </div>
+    <div class="admin-info-banner">
+      Real-time Menu Controls: Toggle item availability (In Stock / Out of Stock) and ⭐ Best Seller status below.
+    </div>
+    <div class="admin-controls">
+      <div class="admin-search-wrapper">
+        <span class="admin-search-icon">🔍</span>
+        <input type="text" id="admin-search-input" class="admin-search-input" placeholder="Search items..."
+          autocomplete="off" />
+      </div>
+      <div class="admin-category-filters" id="admin-category-filters">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+    <div class="admin-items-list" id="admin-items-list">
+      <!-- Admin item toggles injected here -->
+    </div>
+    <div class="admin-footer">
+      <button class="btn-happy-hours" id="btn-happy-hours">🎉 Activate Happy Hours</button>
+      <button class="btn-reset-admin" id="btn-reset-admin">🔄 Reset Menu to Defaults</button>
+      <button class="btn-logout-admin" id="btn-logout-admin">🔒 Lock / Logout Admin</button>
+    </div>
+  </aside>
+
+  <!-- ITEM CUSTOMIZATION MODAL -->
+  <div class="modal-backdrop" id="item-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="btn-close-modal" id="modal-close" aria-label="Close Modal">✕</button>
+      <img id="modal-img" class="modal-header-img" src="" alt="Menu item preview" />
+      <div class="modal-content">
+        <h3 id="modal-title" class="modal-title">Item Title</h3>
+        <p id="modal-desc" class="modal-desc">Item Description</p>
+
+        <div id="modal-options">
+          <!-- Dynamic options (milk choices, grind, extra shot, etc.) -->
+        </div>
+
+        <div class="modal-footer">
+          <div class="quantity-control">
+            <button class="btn-qty" id="btn-qty-minus">-</button>
+            <span class="qty-val" id="modal-qty-val">1</span>
+            <button class="btn-qty" id="btn-qty-plus">+</button>
+          </div>
+          <button class="btn-add-to-cart-confirm" id="btn-add-to-cart-confirm">
+            Add to Order • ₪0
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOPPING CART DRAWER -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-header">
+      <h3 class="cart-title">Your cart</h3>
+      <button class="btn-close-cart" id="cart-close" aria-label="Close Cart">✕</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list">
+      <!-- Cart items injected here -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Total:</span>
+        <span class="cart-total-price" id="cart-total-price">₪0</span>
+      </div>
+      <button class="btn-checkout" id="btn-checkout">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-brand">Famore</div>
+      <div class="footer-info">
+        📍 Masada St 43, Haifa • 📞 +972 00-000-0000<br>
+        Sunday<br> 07:00 - 14:30<br>
+        Monday - Saturday<br> 07:00 - 16:30
+      </div>
+      <p>&copy; 2026 Famore. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
