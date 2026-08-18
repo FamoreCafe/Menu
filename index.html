@@ -30,14 +30,11 @@
       </a>
 
       <div class="header-actions">
-        <div class="badge-open">
-          <span class="pulse-dot"></span> Open • 07:00 - 16:30
-        </div>
-        <button class="btn-admin-toggle" id="admin-toggle-btn" aria-label="Toggle Admin Mode">
+        <button class="btn-admin-toggle" id="admin-toggle-btn" aria-label="Toggle Admin Mode" style="display: none;">
           🔒 Staff
         </button>
-        <button class="btn-cart-toggle" id="cart-toggle-btn" aria-label="Open Cart">
-          <span>🛍️ Cart</span>
+        <button class="btn-cart-toggle" id="cart-toggle-btn" aria-label="Open Order Summary">
+          <span>📋 My Order</span>
           <span class="cart-count" id="cart-count">0</span>
         </button>
       </div>
@@ -99,6 +96,8 @@
     </section>
   </main>
 
+  <!-- ---------------------------------------------------------------------------------------------- -->
+
   <!-- ADMIN AUTHENTICATION MODAL -->
   <div class="modal-backdrop" id="admin-auth-modal" role="dialog" aria-modal="true">
     <div class="modal-card auth-modal-card">
@@ -106,8 +105,7 @@
       <div class="modal-content auth-modal-content">
         <div class="auth-icon">🔒</div>
         <h3 class="modal-title">Staff Access Login</h3>
-        <p class="modal-desc">Enter PIN passcode to access menu management
-        </p>
+        <p class="modal-desc">Enter PIN passcode to access menu management</p>
 
         <form id="admin-auth-form" onsubmit="event.preventDefault();">
           <input type="password" id="admin-pin-input" class="admin-pin-input" placeholder="Enter PIN" maxlength="10"
@@ -128,7 +126,7 @@
       <button class="btn-close-admin" id="admin-close" aria-label="Close Admin Panel">✕</button>
     </div>
     <div class="admin-info-banner">
-      Real-time Menu Controls: Toggle item availability (In Stock / Out of Stock) and ⭐ Best Seller status below.
+      Real-time Menu Controls: Toggle item information.
     </div>
     <div class="admin-controls">
       <div class="admin-search-wrapper">
@@ -177,21 +175,37 @@
     </div>
   </div>
 
-  <!-- SHOPPING CART DRAWER -->
-  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+  <!-- ----------------------------------------------------------------------------------------------------- -->
+
+  <!-- ORDER SUMMARY / COST ESTIMATOR DRAWER -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Order Summary & Cost Estimator">
     <div class="cart-header">
-      <h3 class="cart-title">Your cart</h3>
-      <button class="btn-close-cart" id="cart-close" aria-label="Close Cart">✕</button>
+      <div>
+        <h3 class="cart-title">📋 Order Summary</h3>
+        <span class="order-estimator-subtitle">Price & Cost Estimator</span>
+      </div>
+      <button class="btn-close-cart" id="cart-close" aria-label="Close Order Summary">✕</button>
+    </div>
+    <div class="demo-menu-banner">
+      <div class="demo-banner-header">
+        <span class="demo-banner-icon">💡</span>
+        <strong class="demo-banner-title">Demo Menu Notice</strong>
+      </div>
+      <ul class="demo-banner-list">
+        <li>Interactive price calculator for preview and estimation only</li>
+        <li>Online orders and checkout are not submitted</li>
+        <li>Please order directly with our staff at the cafe counter</li>
+      </ul>
     </div>
     <div class="cart-items-list" id="cart-items-list">
       <!-- Cart items injected here -->
     </div>
     <div class="cart-footer">
       <div class="cart-total-row">
-        <span>Total:</span>
+        <span>Estimated Total:</span>
         <span class="cart-total-price" id="cart-total-price">₪0</span>
       </div>
-      <button class="btn-checkout" id="btn-checkout">Checkout</button>
+      <button class="btn-checkout btn-clear-order" id="btn-checkout">🗑️ Clear Order</button>
     </div>
   </aside>
 
@@ -200,7 +214,7 @@
     <div class="container">
       <div class="footer-brand">Famore</div>
       <div class="footer-info">
-        📍 Masada St 43, Haifa • 📞 +972 00-000-0000<br>
+        📍 Masada St 43, Haifa<br> <!-- • 📞 +972 00-000-0000<br> -->
         Sunday<br> 07:00 - 14:30<br>
         Monday - Saturday<br> 07:00 - 16:30
       </div>
