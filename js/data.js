@@ -338,6 +338,19 @@ window.MENU_ITEMS = [
     }
   },
   {
+    id: 'c18',
+    name: 'Espresso Coconut Water',
+    category: 'coffee',
+    price: 14,
+    description: 'Espresso served over chilled coconut water with ice.',
+    image: 'images/Coffee/c18_EspressoCoconutWater.jpg', //'https://messyvegancook.com/wp-content/uploads/2024/05/Coconut-water-iced-americano.jpg',
+    tags: ['special'],
+    inStock: true,
+    options: {
+      TakeAway: { name: 'Take Away', price: 0 }
+    }
+  },
+  {
     id: 'c16',
     name: 'Orange Juice',
     category: 'coffee',
